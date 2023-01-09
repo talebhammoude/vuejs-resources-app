@@ -17,7 +17,26 @@ export default {
     },
     data(){
         return {
-            selectedTab: 'stored-resources'
+            selectedTab: 'stored-resources',
+            storedResources: [
+                    {
+                        id: 'official-guide',
+                        title: 'Official Guide',
+                        description: 'The official Vue.js documentation.',
+                        link: 'https://vuejs.org'
+                    },
+                    {
+                        id: 'google',
+                        title: 'Google',
+                        description: 'Learn how to google ...',
+                        link: 'https://google.se'
+                    },
+                ]
+        }
+    },
+    provide (){
+        return {
+            resources: this.storedResources
         }
     },
     methods: {
