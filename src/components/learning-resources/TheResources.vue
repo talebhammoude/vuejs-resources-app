@@ -1,7 +1,7 @@
 <template>
     <base-card>
-        <base-button @click="setSelectedTab('stored-resources')" :style="selectedTab === 'stored-resources' ? 'border-style:solid; border-width:2px; border-color: #640032;':null ">Stored Resources</base-button>
-        <base-button @click="setSelectedTab('add-resource')" :style="selectedTab === 'add-resource' ? 'border-style:solid; border-width:2px; border-color: #640032;':null ">Add Resource</base-button>
+        <base-button @click="setSelectedTab('stored-resources')" :style="selectedTab === 'stored-resources' ? 'border-style:solid; border-width:2px; border-color: #270041;':'background-color:white; color:black;' ">Stored Resources</base-button>
+        <base-button @click="setSelectedTab('add-resource')" :style="selectedTab === 'add-resource' ? 'border-style:solid; border-width:2px; border-color: #270041;':'background-color:white; color:black;' ">Add Resource</base-button>
     </base-card>
     <component :is="selectedTab"></component>
 </template>
