@@ -3,7 +3,9 @@
         <base-button @click="setSelectedTab('stored-resources')" :style="selectedTab === 'stored-resources' ? 'border-style:solid; border-width:2px; border-color: #270041;':'background-color:white; color:black;' ">Stored Resources</base-button>
         <base-button @click="setSelectedTab('add-resource')" :style="selectedTab === 'add-resource' ? 'border-style:solid; border-width:2px; border-color: #270041;':'background-color:white; color:black;' ">Add Resource</base-button>
     </base-card>
-    <component :is="selectedTab"></component>
+    <keep-alive>
+        <component :is="selectedTab"></component>
+    </keep-alive>
 </template>
 
 <script>
@@ -36,12 +38,23 @@ export default {
     },
     provide (){
         return {
-            resources: this.storedResources
+            resources: this.storedResources,
+            addResource: this.addResource
         }
     },
     methods: {
         setSelectedTab(tab) {
             this.selectedTab = tab;
+        },
+        addResource(title, description, link) {
+            const newResource = {
+                id: new Date().toISOString(),
+                title: title,
+                description: description,
+                link: link
+            };
+            this.storedResources.unshift(newResource);
+            this.selectedTab = 'stored-resources';
         }
     }
 }
