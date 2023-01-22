@@ -32,7 +32,10 @@
 
 
 <script>
+import addToDb from '../DB/FirestoreConfig';
+
 export default {
+
     inject: ['addResource'],
     data () {
         return {
@@ -52,6 +55,7 @@ export default {
             }
 
             this.addResource(enteredTitle, enteredDesc, enteredLink);
+            addToDb(enteredTitle, enteredDesc, enteredLink);
 
         },
         confirmError() {
